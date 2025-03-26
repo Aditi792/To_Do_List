@@ -3,8 +3,7 @@
 body{
     font-style: arial;
     margin: auto;
-    width: 50%;
-    background-color: rgb(179, 146, 84);
+  width: 50%;
 }
 .btn{
     padding: 10px 15px ;
@@ -33,7 +32,7 @@ body{
 }
 .todo-grid{
     display: grid;
-    grid-template-columns: 220px 150px 100px;
+    grid-template-columns: 220px 150px 100px 100px;
     column-gap: 10px;
     row-gap: 20px;
     margin-top: 10px;
@@ -46,4 +45,19 @@ body{
     cursor: pointer;
     border-radius: 8%;
 
+}
+.popup-container{
+    padding: 10px;
+}
+.btn-update{
+    padding: 10px 15px ;
+    height: 40px;
+    font-style: arial;
+    margin-right: 10px;
+    background-color: rgb(156, 109, 8);
+    font-weight: bold;
+    border: none;
+    border-radius: 10%;
+    color: aliceblue;
+    cursor: pointer;
 }
