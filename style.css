@@ -3,7 +3,8 @@
 body{
     font-style: arial;
     margin: auto;
-  width: 50%;
+    width: 50%;
+    background-color: bisque;
 }
 .btn{
     padding: 10px 15px ;
