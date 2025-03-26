@@ -29,6 +29,16 @@ function addTodo(){
     const dateInput = document.querySelector(".date");
     const date = dateInput.value;
 
+    if (!name) {
+        alert("Task name cannot be empty.");
+        return;
+    }
+
+    if (!isValidDate(date)) {
+        alert("Please enter a valid date in YYYY-MM-DD format.");
+        return;
+    }
+
     todoList.push({name , date}); //input data as a object in the array .
     // console.log(todoList) ;
     list.value = "";
@@ -47,15 +57,20 @@ function deleteTodo(index) {
 }
 
 function updateTodoPopup(index) {
+    closePopup();// Ensure only one popup exists at a time
+
     const popup = document.createElement("div");
+    popup.classList.add("popup-container");
     popup.innerHTML = `
         <div class="popup">
             <label>Task Name:</label>
-            <input type="text" id="update-name" value="${todoList[index].name}">
+            <input type="text" class="input" id="update-name" value="${todoList[index].name}">
             <label>Date:</label>
-            <input type="date" id="update-date" value="${todoList[index].date}">
-            <button onclick="applyUpdate(${index})">Save</button>
-            <button onclick="closePopup()">Cancel</button>
+            <input type="date" class="input" id="update-date" value="${todoList[index].date}">
+            <div class="popup-button">
+            <button class = "btn-update" onclick="applyUpdate(${index})">Save</button>
+            <button class = "btn-update" onclick="closePopup()">Cancel</button>
+            </div>
         </div>
     `;
     document.body.appendChild(popup);
@@ -76,7 +91,10 @@ function applyUpdate(index) {
 }
 
 function closePopup() {
-    document.querySelector(".popup").remove();
+    const existingPopup = document.querySelector(".popup-container");
+    if (existingPopup) {
+        existingPopup.remove();
+    }
 }
 
 function isValidDate(dateString) {
