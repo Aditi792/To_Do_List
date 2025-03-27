@@ -1,4 +1,10 @@
 
+const todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+displayTodoList();
+
+function saveToDoLocalStorage(){
+    localStorage.setItem("todoList",JSON.stringify(todoList))
+}
 
 function displayTodoList(){
 
@@ -20,8 +26,6 @@ function displayTodoList(){
     document.querySelector('.to-do-list').innerHTML= todolistHTML;
 }
 
-const todoList= [];
-
 function addTodo(){
     const list = document.querySelector(".name");
     const name = list.value;
@@ -41,6 +45,7 @@ function addTodo(){
 
     todoList.push({name , date}); //input data as a object in the array .
     // console.log(todoList) ;
+    saveToDoLocalStorage();
     list.value = "";
     dateInput.value = "";
 
@@ -53,6 +58,7 @@ function addTodo(){
 
 function deleteTodo(index) {
     todoList.splice(index, 1);
+    saveToDoLocalStorage();
     displayTodoList();
 }
 
@@ -86,6 +92,7 @@ function applyUpdate(index) {
     }
 
     todoList[index] = { name: newName, date: newDate };
+    saveToDoLocalStorage();
     closePopup();
     displayTodoList();
 }
